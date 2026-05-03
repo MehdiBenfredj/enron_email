@@ -1,5 +1,3 @@
-# Projet de PR72
-
 L'objectif du projet est d'analyser un corpus d'e-mails pour en extraire des informations. L'analyse doit être parallélisée en limitant le nombre de tâches à un une valeur raisonnable dépendante du nombre de processeurs/threads de la machine.
 
 ## Le corpus d'e-mails Enron

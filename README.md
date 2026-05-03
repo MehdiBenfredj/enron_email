@@ -42,62 +42,6 @@ Ne confondez par ces champs avec les champs X-From, X-To, etc. que nous ne trait
 
 X-From étant présent dans tout e-mail, et placé après les 4 champs qui nous intéressent, le traitement d'un e-mail s'arrête dès ce champ atteint. Il est possible que des champs soient manquant. Dans ce cas, si From est vide, ou si aucun destinataire (direct, copie ou copie cachée) n'est trouvé, le mail ne donnera lieu à aucune sortie.
 
-## Tâches du projet
 
-Il vous sera nécessaire pour réaliser le projet :
 
-- de proposer une architecture logicielle tirant parti du parallélisme de votre PC
-- qui permette l'analyse telle qu'elle est décrite
-- d'implémenter votre architecture et de l'exécuter sur le jeu de données complet d'Enron
 
-Les contraintes de réalisation sont les suivantes :
-
-- Vous réaliserez le projet par groupes de 3 étudiants.
-- Le programme doit être implémenté en langage C++ (pouvant contenir du C)
-- Le programme ne doit pas faire appel à des bibliothèques/frameworks autres que les bibliothèques standard C (dont `getopt` fait partie) et C++ (vous utiliserez en particulier les conteneurs de la STL). En particulier, vous n'utiliserez ni boost, ni Poco, ni Qt.
-- Le programme doit compiler et fonctionner sous Linux. Un Makefile est fourni pour permettre la compilation avec une simple commande `make`.
-- L'analyse ne doit pas prendre plus d'une minute
-- Le programme ne doit pas fuire de mémoire (vérifier avec `valgrind`)
-
-## Architecture
-
-L'architecture doit permettre l'évolution du programme, par exemple sur de nouvelles tâches. Pour cela, vous vous appuierez sur les propriétés des langages orientés objets et de C++.
-
-Une attention particulière sera apportée au choix du canal de communication entre les _workers_ et le _task dispatcher_. Dans ce projet, les _workers_ doivent en effet être persistants (i.e. la fin d'une tâche ne termine pas le _worker_, mais ce dernier communique avec le _task dispatcher_ pour obtenir une nouvelle tâche). L'arrêt des _workers_ ne se fait qu'avant la fusion des fichiers de sortie intermédiaires.
-
-L'architecture devra être validée avec l'enseignant du TP, et fera l'objet d'une mise en forme en UML à intégrer dans le rapport.
-
-## Analyse des e-mails
-
-L'analyse des e-mails est parallélisée. Vous pourrez utiliser soit des processus (`fork` en C), soit des threads. Les tâches envoyées doivent pouvoir changer si l'on souhaite étendre le programme à d'autres types d'analyses.
-
-## Implémentation
-
-L'implémentation en C++ doit permettre l'application des bonnes pratiques vues sur les premières séances de TP. Pour celà, vous serez amenés à montrer régulièrement le code produit à l'intervenant de TP.
-
-# Livrables
-
-À la fin du projet, vous produirez :
-
-- le code, compilable et utilisable. Il doit être commenté pour aider à sa compréhension (rôle des classes, des variables, algorithmes complexes, etc.)
-- un rapport décrivant les étapes de la conception à la réalisation, ainsi qu'un retour d'expérience (RETEX) consistant à réponse à la question "_si je refaisais le projet maintenant avec l'expérience acquise, qu'est-ce que je changerais ?_"
-- une présentation avec support de présentation (ppt, odp, beamer, etc.). La présentation reprend les points clé du rapport, et ne comporte pas de démo (l'examinateur doit pouvoir compiler et faire fonctionner le programme sans problème lui-même). La présentation dure 10 minutes, suivies de questions par l(es)'examinateur(s).
-
-# Dates
-
-Les dates suivantes sont les jalons à suivre dans le développement :
-
-- 19 janvier : constitution des groupes, début de la réflexion sur l'architecture
-- 25 et 26 janvier : proposition et validation de l'architecture du programme à l'intervenant de TP.
-- 2 février : prototype du programme, séquentiel uniquement
-- 8 et 9 février : prototype du programme, traitement des e-mails parallèle
-- 14 février : envoi du rapport, et du code
-- 16 février : présentations des projets
-
-# Conseils
-
-Il est fortement conseillé de commencer le projet en y travaillant beaucoup au début pour mieux cerner le rythme nécessaire pour le faire aboutir et éviter d'entrer en concurrence avec les épreuves de fin de période.
-
-Il est également fortement conseillé de poser des questions à l'intervenant de TP : le sujet est complexe et il vaut mieux déjouer le plus vite possible les incompréhensions/zones floues pour vous.
-
-Enfin, il vous sera nécessaire de travailler ensemble plutôt que chacun de son côté, mettez donc en oeuvre une méthode de gestion de projet pour vous assurer du bon déroulement (répartition des tâches, suivi, transmission des acquis à vos camarades du groupes, etc.).
